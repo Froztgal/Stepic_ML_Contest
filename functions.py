@@ -24,7 +24,7 @@ def add_date(dataframe):
     :return: dataframe with two new columns
     """
 
-    new_df = dataframe
+    new_df = dataframe.copy()
     new_df['date_clock'] = pd.to_datetime(new_df['timestamp'], unit='s')
     new_df['date'] = new_df['date_clock'].dt.date
 
@@ -59,7 +59,7 @@ def get_pivot_table(dataframe, columns, index="user_id", values="step_id", aggfu
     :return: pivot table dataframe
     """
 
-    new_df = dataframe
+    new_df = dataframe.copy()
     new_df = new_df.pivot_table(index=index,
                                 columns=columns,
                                 values=values,
@@ -94,7 +94,7 @@ def add_pass_mark(train_dataframe, threshold):
     :return: marked dataframe
     """
 
-    new_df = train_dataframe
+    new_df = train_dataframe.copy()
     new_df['passed_course'] = new_df.correct > threshold
 
     return new_df
@@ -157,7 +157,7 @@ def filter_by_time(dataframe, users_start_time):
     :return: filtered dataframe
     """
 
-    new_df = dataframe
+    new_df = dataframe.copy()
     new_df["user_time"] = new_df.user_id.map(str) + "_" + new_df.timestamp.map(str)
     new_df = new_df.merge(users_start_time, on="user_id", how="outer")
     new_df = new_df[new_df.user_time <= new_df.user_learning_time_threshold]
@@ -203,8 +203,8 @@ def get_x_y_train(events, submissions, threshold):
     """
 
     # Копируем датафреймы
-    new_events = events
-    new_submissions = submissions
+    new_events = events.copy()
+    new_submissions = submissions.copy()
 
     # Lобавляем дату и время из временных меток
     new_events = add_date(new_events)
@@ -263,8 +263,8 @@ def get_x_pred(events, submissions):
     """
 
     # Копируем датафреймы
-    new_events = events
-    new_submissions = submissions
+    new_events = events.copy()
+    new_submissions = submissions.copy()
 
     # Добавляем дату и время из временных меток
     new_events = add_date(new_events)
