@@ -6,7 +6,7 @@
 Считается, что пользователь успешно закончил курс,
 если он правильно решил больше 40 практических заданий.
 
-В данных [events_data_test.csv](https://stepik.org/media/attachments/course/4852/event_data_train.zip)
+В файлах [events_data_test.csv](https://stepik.org/media/attachments/course/4852/event_data_train.zip)
 и
 [submission_data_test.csv](https://stepik.org/media/attachments/course/4852/submissions_data_train.zip)
 хранится информация о решениях и действиях для 6184 студентов за первые два дня прохождения курса.
